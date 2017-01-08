@@ -4,22 +4,16 @@ This is a Javascript port of [tommeagher's](https://github.com/tommeagher) [hero
 
 ## Usage
 
-Build the docker container with:
+Run the docker container with:
 
 ```
-$ docker build -t docker_ebooks .
-```
-
-Then run with:
-
-```
-$ docker run \
+$ docker run --name docker_ebooks \
     -e "CONSUMER_KEY=<Consumer API Key>" \
 	-e "CONSUMER_SECRET=<Consumer API Secret>" \
 	-e "ACCESS_TOKEN_KEY=<User API Access Token>" \
 	-e "ACCESS_TOKEN_SECRET=<User API Access Token Secret>" \
 	-e "TWITTER_NAME=<Twitter user to source tweets from>" \
 	-e "ORDER=<Optional, defaults to 2. Higher numbers are less silly>"
-	-e "GENERATE_FREQUENCY=<Optional, defaults to 60. How many minutes between each tweet attempt.>"
-	docker_ebooks
+	-e "GENERATE_FREQUENCY=<Optional, defaults to 60. How many minutes between each tweet attempt.>" \
+	rfratto/docker_ebooks
 ```
