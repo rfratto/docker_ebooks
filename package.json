@@ -1,0 +1,23 @@
+{
+  "name": "docker_ebooks",
+  "version": "1.0.0",
+  "description": "A docker image to post to an _ebooks version of your Twitter account",
+  "main": "ebooks.js",
+  "scripts": {
+	"start": "node src/ebooks.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rfratto/docker_ebooks.git"
+  },
+  "author": "Robert Fratto <robertfratto@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rfratto/docker_ebooks/issues"
+  },
+  "homepage": "https://github.com/rfratto/docker_ebooks#readme",
+  "dependencies": {
+    "rx": "^4.1.0",
+    "twitter": "^1.7.0"
+  }
+}
