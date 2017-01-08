@@ -1,14 +1,18 @@
 #!/bin/sh
 SECONDS_PER_MINUTE=60
 
-MINUTES=60 # How many minutes to generate a tweet
+# How many minutes to between generating tweets
+GENERATE_FREQUENCY=${GENERATE_FREQUENCY:-60} 
 
 DELAY=$(expr $SECONDS_PER_MINUTE \* $MINUTES)
 
-echo "Generating tweets every $DELAY seconds."
+echo "[INFO] Started. Generating tweets every $DELAY seconds."
 
 while true; do
-	echo "Generating tweet..."
-	node src/ebooks.js || exit 1 
+	echo "[INFO] Generating tweet..."
+	node src/ebooks.js || exit 1
+	echo "[INFO] Sleeping for $DELAY seconds."
 	sleep $DELAY
 done
+
+echo "[INFO] Exited."

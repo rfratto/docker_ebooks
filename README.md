@@ -20,5 +20,6 @@ $ docker run \
 	-e "ACCESS_TOKEN_SECRET=<User API Access Token Secret>" \
 	-e "TWITTER_NAME=<Twitter user to source tweets from>" \
 	-e "ORDER=<Optional, defaults to 2. Higher numbers are less silly>"
+	-e "GENERATE_FREQUENCY=<Optional, defaults to 60. How many minutes between each tweet attempt.>"
 	docker_ebooks
 ```
