@@ -21,7 +21,6 @@ if (process.env.FILE_NAME !== undefined) {
 	twitterUser = client.getUser(options.TWITTER_NAME)
 }
 
-
 twitterUser
 .map((user) => user.statuses_count)
 .map(function(statuses) {
@@ -36,7 +35,7 @@ twitterUser
 
 	return client.getAllTweets(options.TWITTER_NAME, numOfRetrievals, undefined)
 })
-.tap((data) => console.log(`Receieved ${data.tweets.length} tweets.`))
+.tap((data) => console.log(`[INFO] Receieved ${data.tweets.length} tweets from ${options.TWITTER_NAME}.`))
 .map((data) => data.tweets)
 .map(function(tweets) {
 	var mine = new MarkovChainer(options.ORDER)
@@ -54,7 +53,7 @@ twitterUser
 	var wordsToRemove = /(in|to|from|for|with|by|our|of|your|around|under|beyond)\s\w+$/
 
 	if (Math.floor(Math.random() * 5) == 0 && sentence.search(wordsToRemove) !== -1) {
-		console.log("Losing last word randomly.")
+		console.log("[INFO] Dropping last word.")
 		sentence = sentence.replace(/\s\w+.$/, '')
 	}
 
@@ -63,7 +62,7 @@ twitterUser
 	if (sentence.length < 40) {
 		var random = Math.floor(Math.random() * 11)
 		if (random == 0 || random == 7) {
-			console.log("Short tweet. Adding another sentence randomly.")
+			console.log("[INFO] Short tweet. Adding another sentence randomly.")
 			var newer_tweet = mine.generateSentence()
 			if (newer_tweet !== null) {
 				sentence += " " + newer_tweet
@@ -82,23 +81,24 @@ twitterUser
 			if (tweet.search(/([\.\!\?\"\']$)/) === -1) tweet += "."
 
 			if (tweet.toUpperCase().replace(/ /g,'') == sentence.replace(/ /g,'').toUpperCase()) {
-				console.log("TOO SIMILAR: " + sentence)
+				console.log("[INFO] TOO SIMILAR: " + sentence)
 				return null
 			}
 		}
 
 		return sentence
 	} else {
-		console.log("TOO LONG: " + sentence)
+		console.log("[INFO] TOO LONG: " + sentence)
 		return null
 	}
 })
 .tap(function(tweet) {
-	if (tweet == null) throw new Error("Tweet is empty, sorry.")
+	if (tweet == null) throw new Error("[INFO] Did not generate tweet.")
 })
 .flatMap(function(tweet) {
+	console.log(`[INFO] Generated tweet: ${tweet}`)
+
 	if (options.DEBUG) {
-		console.log(`TWEET: ${tweet}`)
 		return Rx.Observable.just(true)
 	} else {
 		return client.makeTweet({ status: tweet })

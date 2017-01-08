@@ -12,9 +12,9 @@ var options = {
 
 Object.keys(options).forEach(function(option) {
 	if (options[option] === undefined) {
-		console.error(`Missing option ${option}`)
+		console.error(`[ERR ] Missing option ${option}`)
 		process.exit(1)
 	}
 })
 
-module.exports = options 
+module.exports = options
