@@ -4,7 +4,7 @@ SECONDS_PER_MINUTE=60
 # How many minutes to between generating tweets
 GENERATE_FREQUENCY=${GENERATE_FREQUENCY:-60} 
 
-DELAY=$(expr $SECONDS_PER_MINUTE \* $MINUTES)
+DELAY=$(expr $SECONDS_PER_MINUTE \* $GENERATE_FREQUENCY)
 
 echo "[INFO] Started. Generating tweets every $DELAY seconds."
 
