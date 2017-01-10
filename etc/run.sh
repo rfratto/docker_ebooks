@@ -11,6 +11,9 @@ if [ "$MIN_GENERATE_FREQUENCY" -gt "$MAX_GENERATE_FREQUENCY" ]; then
 	exit 1
 fi
 
+# Check environment variables before starting
+node src/options.js || exit 1 
+
 MIN_DELAY=$(expr $SECONDS_PER_MINUTE \* $MIN_GENERATE_FREQUENCY)
 MAX_DELAY=$(expr $SECONDS_PER_MINUTE \* $MAX_GENERATE_FREQUENCY)
 
