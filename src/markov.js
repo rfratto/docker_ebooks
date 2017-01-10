@@ -87,6 +87,8 @@ class MarkovChainer {
 
 			sentence += res[res.length - 2] + res[res.length - 1]
 			return sentence
+		} else {
+			console.log('[INFO] Length of beginning did not match order.')
 		}
 
 		return null
