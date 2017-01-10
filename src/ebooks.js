@@ -14,7 +14,7 @@ var client = new Twitter({
 
 var twitterUser = null
 
-if (process.env.FILE_NAME !== undefined) {
+if (options.FILE_NAME !== undefined) {
 	// Return a mock user
 	twitterUser = Rx.Observable.just({ statuses_count: 1 })
 } else {
@@ -27,9 +27,9 @@ twitterUser
 	return (statuses < 3200) ? (statuses / 200) + 1 : 17
 })
 .flatMap(function(numOfRetrievals) {
-	if (process.env.FILE_NAME !== undefined) {
+	if (options.FILE_NAME !== undefined) {
 		return Rx.Observable.just({
-			tweets: fs.readFileSync(process.env.FILE_NAME, { encoding: 'UTF-8' }).split("\n")
+			tweets: fs.readFileSync(options.FILE_NAME, { encoding: 'UTF-8' }).split("\n")
 		})
 	}
 

@@ -12,6 +12,9 @@ var options = {
 
 	// Does not post actual tweets when true
 	DEBUG: parseBoolean(process.env.DEBUG) || false,
+
+	// Uses a file to get tweets when key exists
+	FILE_NAME: process.env.FILE_NAME
 }
 
 Object.keys(options).forEach(function(option) {
