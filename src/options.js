@@ -1,3 +1,7 @@
+var parseBoolean = function(bool) {
+	return (bool == "true" || bool == "1")
+}
+
 var options = {
 	CONSUMER_KEY: process.env.CONSUMER_KEY,
 	CONSUMER_SECRET: process.env.CONSUMER_SECRET,
@@ -7,7 +11,7 @@ var options = {
 	ORDER: parseInt(process.env.ORDER) || 2,
 
 	// Does not post actual tweets when true
-	DEBUG: (process.env.DEBUG === "true") || false,
+	DEBUG: parseBoolean(process.env.DEBUG) || false,
 }
 
 Object.keys(options).forEach(function(option) {
