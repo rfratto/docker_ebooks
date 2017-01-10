@@ -14,7 +14,7 @@ class MarkovChainer {
 
 		if (words.length > this.order) {
 			words.push(terminator)
-			this.beginnings.push(0, words.slice(0, this.order))
+			this.beginnings.push(words.slice(0, this.order))
 		}
 
 		words.forEach(function(word) {
