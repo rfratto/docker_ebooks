@@ -24,7 +24,7 @@ class MarkovChainer {
 				var mykey = [buf[0], buf[buf.length - 2]].toString()
 				var freqVal = buf[buf.length - 1]
 
-				if (self.freq[mykey] !== undefined) {
+				if (mykey in self.freq) {
 					self.freq[mykey].push(freqVal)
 				} else {
 					self.freq[mykey] = [freqVal]
