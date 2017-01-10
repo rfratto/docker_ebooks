@@ -17,12 +17,12 @@ MAX_DELAY=$(expr $SECONDS_PER_MINUTE \* $MAX_GENERATE_FREQUENCY)
 echo "[INFO] Started. Generating tweets between every $MIN_DELAY and $MAX_DELAY seconds."
 
 while true; do
-	echo "[INFO] Generating tweet..."
-	node src/ebooks.js || exit 1
-
 	NEXT_SLEEP=$(python -S -c "import random; print random.randrange($MIN_DELAY, $MAX_DELAY + 1)")
 	echo "[INFO] Sleeping for $NEXT_SLEEP seconds."
 	sleep $NEXT_SLEEP
+
+	echo "[INFO] Generating tweet..."
+	node src/ebooks.js || exit 1
 done
 
 echo "[INFO] Exited."
