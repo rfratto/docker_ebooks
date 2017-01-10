@@ -21,7 +21,7 @@ var options = {
 }
 
 Object.keys(options).forEach(function(option) {
-	if (option in options) {
+	if (options[option] === undefined) {
 		console.error(`[ERR ] Missing option ${option}`)
 		process.exit(1)
 	}
