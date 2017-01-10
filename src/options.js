@@ -10,6 +10,10 @@ var options = {
 	TWITTER_NAME: process.env.TWITTER_NAME,
 	ORDER: parseInt(process.env.ORDER) || 2,
 
+
+	// How often a tweet should suceed, in 1:ODDS
+	ODDS: parseInt(process.env.ODDS) || 1,
+
 	// Does not post actual tweets when true
 	DEBUG: parseBoolean(process.env.DEBUG) || false,
 

@@ -3,7 +3,8 @@ var Twitter = require('./twitter-rx'),
 	fs = require('fs'),
 	MarkovChainer = require('./markov'),
 	n2c = require('./name2codepoint.js'),
-	options = require('./options.js')
+	options = require('./options.js'),
+	randRange = require('./randRange')
 
 var client = new Twitter({
 	consumer_key: options.CONSUMER_KEY,
@@ -19,6 +20,11 @@ if (options.FILE_NAME !== undefined) {
 	twitterUser = Rx.Observable.just({ statuses_count: 1 })
 } else {
 	twitterUser = client.getUser(options.TWITTER_NAME)
+}
+
+if (randRange(1, options.ODDS) != 1) {
+	console.log('[INFO] Odds failed, will not generate tweet.')
+	process.exit(0)
 }
 
 twitterUser
