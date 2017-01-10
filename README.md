@@ -15,5 +15,7 @@ $ docker run --name docker_ebooks \
 	-e "TWITTER_NAME=<Twitter user to source tweets from>" \
 	-e "ORDER=<Optional, defaults to 2. Higher numbers are less silly>"
 	-e "GENERATE_FREQUENCY=<Optional, defaults to 60. How many minutes between each tweet attempt.>" \
+	-e "MIN_GENERATE_FREQUENCY=<Optional, defaults to GENERATE_FREQUENCY if omitted. Minimum number of minutes between each attempt.>" \
+	-e "MAX_GENERATE_FREQUENCY=<Optional, defaults to GENERATE_FREQUENCY if omitted. Maximum number of minutes between each attempt.>" \
 	rfratto/docker_ebooks
 ```
