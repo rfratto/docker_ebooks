@@ -18,11 +18,11 @@ var options = {
 	DEBUG: parseBoolean(process.env.DEBUG) || false,
 
 	// Uses a file to get tweets when key exists
-	FILE_NAME: process.env.FILE_NAME
+	FILE_NAME: process.env.FILE_NAME || null
 }
 
 Object.keys(options).forEach(function(option) {
-	if (options[option] === undefined) {
+	if (option in options) {
 		console.error(`[ERR ] Missing option ${option}`)
 		process.exit(1)
 	}
