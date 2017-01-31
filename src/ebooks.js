@@ -2,7 +2,6 @@ var Twitter = require('./twitter-rx'),
     Rx = require('rx'),
 	fs = require('fs'),
 	MarkovChainer = require('./markov'),
-	n2c = require('./name2codepoint.js'),
 	options = require('./options.js'),
 	randRange = require('./randRange')
 

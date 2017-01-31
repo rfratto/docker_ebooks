@@ -1,6 +1,7 @@
 // Twitter client extended with some extra rx functions
 var Twitter = require('twitter')
 var Rx = require('rx')
+var n2c = require('./name2codepoint.js')
 
 Twitter.prototype.getTweets = function(params) {
 	var self = this
@@ -127,7 +128,7 @@ var filter_tweet = function(tweet) {
 	// Take out prefixed .
 	tweet.text = tweet.text.replace(/^\./, '')
 
-	var htmlsents = tweet.text.match(/'&\w+;/)
+	var htmlsents = tweet.text.match(/&\w+;/)
 	htmlsents = htmlsents || []
 	htmlsents.forEach(function(item) {
 		tweet.text = tweet.text.replace(item, get_entity(item))
