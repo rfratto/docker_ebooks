@@ -117,4 +117,5 @@ twitterUser
 })
 .subscribe(function(){},function(err) {
 	console.log(err.message || err)
+	process.exit(1)
 }, function(){})
