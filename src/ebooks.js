@@ -33,9 +33,15 @@ twitterUser
 })
 .flatMap(function(numOfRetrievals) {
 	if (options.FILE_NAME !== null) {
-		return Rx.Observable.just({
-			tweets: fs.readFileSync(options.FILE_NAME, { encoding: 'UTF-8' }).split("\n")
-		})
+		client.getTweets = function() {
+			var tweetsFromFile =
+				fs.readFileSync(options.FILE_NAME, { encoding: 'UTF-8' }).split("\n")
+
+			return Rx.Observable.from(tweetsFromFile)
+			.map((tweet) => ({ id: 0, text: tweet }))
+		}
+
+		return client.getAllTweets(options.TWITTER_NAME, 0, undefined)
 	}
 
 	return client.getAllTweets(options.TWITTER_NAME, numOfRetrievals, undefined)
