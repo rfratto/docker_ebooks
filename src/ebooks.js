@@ -104,7 +104,10 @@ twitterUser
 	}
 })
 .tap(function(tweet) {
-	if (tweet == null) throw new Error("[INFO] Did not generate tweet.")
+	if (tweet == null) {
+		console.log("[INFO] Did not generate tweet.")
+		process.exit(0)
+	}
 })
 .flatMap(function(tweet) {
 	console.log(`[INFO] Generated tweet: ${tweet}`)
